@@ -1,0 +1,30 @@
+
+.bannerContainer {
+    position:relative;     
+}
+/* .carousel {
+    position:absolute;
+    top:0;    
+} */
+.istimg {
+    position:absolute;
+    top:0;    
+}
+.navbar {
+    position:absolute;
+    top:30px;
+    z-index:10;
+    background:#fff;
+    width:40%;
+    opacity: 0.3;
+    float: right;
+}
+
+/* .nav.navbar-nav.navbar-right li a {
+    color: blue;
+} */
+
+.navbar.navbar-expand-lg.navbar-light.bg-light.nav.justify-content-end a{
+    color: blue;
+    /* opacity: 0.4; */
+}

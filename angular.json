@@ -1,0 +1,154 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "kingdom-church": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/kingdom-church",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "src/assets/PstQueen/css/bootstrap.css",
+              "src/assets/PstQueen/css/animate.css",
+              "src/assets/PstQueen/css/owl.carousel.min.css",
+              "src/assets/PstQueen/fonts/ionicons/css/ionicons.min.css",
+              "src/assets/PstQueen/fonts/fontawesome/css/font-awesome.min.css",
+              "src/assets/PstQueen/fonts/flaticon/font/flaticon.css",
+              "src/assets/PstQueen/css/magnific-popup.css"
+
+            ],
+            "scripts": [
+              "src/assets/PstQueen/js/jquery-3.2.1.min.js",
+              "src/assets/PstQueen/js/jquery-migrate-3.0.0.js",
+              "src/assets/PstQueen/js/popper.min.js",
+              "src/assets/PstQueen/js/bootstrap.min.js",
+              "src/assets/PstQueen/js/owl.carousel.min.js",
+              "src/assets/PstQueen/js/jquery.waypoints.min.js",
+              "src/assets/PstQueen/js/jquery.stellar.min.js",
+              "src/assets/PstQueen/js/jquery.animateNumber.min.js",
+              "src/assets/PstQueen/js/jquery.magnific-popup.min.js",
+              "src/assets/PstQueen/js/main.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "kingdom-church:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "kingdom-church:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "kingdom-church:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "kingdom-church-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "kingdom-church:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "kingdom-church:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "kingdom-church"
+}
